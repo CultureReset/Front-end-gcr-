@@ -1,0 +1,229 @@
+:root {
+  --bg: #f7f8fa;
+  --card-bg: #ffffff;
+  --card-border: #e3e6ea;
+  --text: #1a1d21;
+  --text-muted: #6b7280;
+  --primary: #2563eb;
+  --primary-contrast: #ffffff;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --card-bg: #1c1f24;
+    --card-border: #2b2f36;
+    --text: #f2f3f5;
+    --text-muted: #9aa1ac;
+    --primary: #5b8def;
+    --primary-contrast: #0b0d10;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a { color: inherit; text-decoration: none; }
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--card-border);
+  background: var(--card-bg);
+}
+
+.top-bar h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.entity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.entity-card {
+  display: block;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.entity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.entity-card .thumb {
+  width: 100%;
+  height: 140px;
+  background: var(--bg) center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.entity-card .body {
+  padding: 12px 14px;
+}
+
+.entity-card h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.entity-card .meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  margin-right: 6px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 64px 24px;
+  color: var(--text-muted);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Entity detail page */
+.hero {
+  height: 260px;
+  border-radius: var(--radius);
+  background: var(--card-bg) center/cover no-repeat;
+  border: 1px solid var(--card-border);
+  margin-bottom: 20px;
+}
+
+.detail-header h1 {
+  margin: 0 0 4px;
+  font-size: 26px;
+}
+
+.detail-header .meta {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.tag-pill {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+}
+
+.section-block {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.section-block h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.photo-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.photo-strip img {
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.hours-table td {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--primary);
+  font-size: 14px;
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GCR — Businesses</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    // Point at the local api-layer- server by default; override in console or here for other environments.
+    window.GCR_API_BASE = window.GCR_API_BASE || 'http://localhost:3001';
+  </script>
+</head>
+<body>
+  <div class="top-bar">
+    <h1>Gulf Coast Radar</h1>
+  </div>
+  <div class="container">
+    <div class="filters">
+      <input id="search-input" type="text" placeholder="Search businesses...">
+      <select id="type-select">
+        <option value="">All types</option>
+        <option value="business">Business</option>
+        <option value="topic">Topic</option>
+      </select>
+    </div>
+    <div id="entity-grid" class="entity-grid"></div>
+    <div id="pagination" class="pagination"></div>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/entities-list.js"></script>
+</body>
+</html>
