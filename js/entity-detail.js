@@ -22,6 +22,13 @@ function renderHours(hours) {
   return `<div class="section-block"><h2>Hours</h2><table class="hours-table">${rows}</table></div>`;
 }
 
+function renderToolButtons(tools) {
+  if (!tools || !tools.length) return '';
+  return `<div class="tool-button-row">${tools
+    .map((t, i) => `<button type="button" class="tool-btn" data-tool-index="${i}">${t.label || t.tool_key}</button>`)
+    .join('')}</div>`;
+}
+
 function renderPhotos(photos) {
   if (!photos || !photos.length) return '';
   return `<div class="section-block"><h2>Photos</h2><div class="photo-strip">${photos
@@ -101,6 +108,7 @@ async function load() {
         </div>
         ${e.description ? `<p>${e.description}</p>` : ''}
         ${renderTags(data.tags)}
+        ${renderToolButtons(data.tools)}
       </div>
       ${renderHours(data.hours)}
       ${renderPhotos(data.photos)}
@@ -110,6 +118,10 @@ async function load() {
         )
         .join('')}
     `;
+
+    root.querySelectorAll('.tool-btn').forEach((btn) => {
+      btn.addEventListener('click', () => openTool(data.tools[Number(btn.dataset.toolIndex)], slug));
+    });
   } catch (err) {
     root.innerHTML = `<div class="empty-state">Couldn't load this business: ${err.message}</div>`;
   }
